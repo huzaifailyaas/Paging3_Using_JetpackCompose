@@ -75,6 +75,8 @@ dependencies {
     implementation("androidx.compose.ui:ui-graphics")
     implementation("androidx.compose.ui:ui-tooling-preview")
     implementation("androidx.compose.material3:material3")
+    implementation("androidx.wear.compose:compose-material:1.4.0")
+    implementation("androidx.paging:paging-compose-android:3.3.2")
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
 
@@ -91,7 +93,7 @@ dependencies {
     // Retrofit with Kotlin Serialization
     implementation("com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:0.8.0") // Supports asConverterFactory
 
-    // Kotlin Serialization (Ensure version compatibility)
+    // Kotlin Serialization
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.3") // Matches Json library
 
     // Compose Navigation
@@ -99,12 +101,22 @@ dependencies {
 
     // Room Components
     implementation("androidx.room:room-runtime:2.6.1")
+
+    //noinspection KaptUsageInsteadOfKsp
     kapt("androidx.room:room-compiler:2.6.1")
 
-    // Paging 3.0
-    implementation("androidx.paging:paging-runtime:3.3.2")
+    implementation("androidx.paging:paging-runtime-ktx:3.3.2") // Latest stable version
+    implementation("androidx.paging:paging-compose:3.3.2") // Compose Paging
+
+
 
     // Dagger Hilt
     implementation("com.google.dagger:hilt-android:2.44")
     kapt("com.google.dagger:hilt-compiler:2.44")
+
+    // For With Transaction
+    implementation("androidx.room:room-ktx:2.6.1")
+
+    implementation("io.coil-kt:coil-compose:2.2.2")
+
 }

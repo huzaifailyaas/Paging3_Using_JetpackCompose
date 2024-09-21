@@ -1,4 +1,4 @@
-package com.example.paging3.Home
+package com.example.paging3.Screens
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavController

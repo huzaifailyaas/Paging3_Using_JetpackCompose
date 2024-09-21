@@ -2,6 +2,8 @@ package com.example.paging3.DependencyInjection
 
 import android.content.Context
 import androidx.room.Room
+import com.example.paging3.Dao.UnsplashImageDao
+import com.example.paging3.Dao.UnsplashRemoteKeysDao
 import com.example.paging3.Util.Constants.UNSPLASH_DATABASE
 import com.example.paging3.local.UnsplashDatabase
 import dagger.Module

@@ -10,7 +10,7 @@ import com.example.paging3.model.UnsplashRemoteKeys
 @Dao
 interface UnsplashRemoteKeysDao {
 
-    @Query("SELECT * FROM unsplash_remote_keys_table WHERE id=id")
+    @Query("SELECT * FROM unsplash_remote_keys_table WHERE id= :id")
     suspend fun getRemoteKeys(id:String): UnsplashRemoteKeys
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
