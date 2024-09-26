@@ -2,7 +2,7 @@
 plugins {
     id("com.android.application") version "8.2.1" apply false
     id("org.jetbrains.kotlin.android") version "1.9.0" apply false
-    id("org.jetbrains.kotlin.plugin.serialization") version "1.6.10" apply false
+    id("org.jetbrains.kotlin.plugin.serialization") version "1.9.0" apply false
 
 }
 
@@ -12,7 +12,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath("androidx.navigation:navigation-safe-args-gradle-plugin:2.8.0") // Add this line
+        classpath("androidx.navigation:navigation-safe-args-gradle-plugin:2.8.0")
         classpath("com.google.dagger:hilt-android-gradle-plugin:2.47")
         classpath("org.jetbrains.kotlin:kotlin-serialization:2.0.10")
 

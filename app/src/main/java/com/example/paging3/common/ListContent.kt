@@ -2,11 +2,9 @@ package com.example.paging3.common
 
 import android.content.Intent
 import android.net.Uri
-import android.util.Log
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material.*
 import androidx.compose.material3.Divider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -63,7 +61,7 @@ fun ListContent(items: LazyPagingItems<UnsplashImage>) {
 
 
 @Composable
-fun UnsplashItem(unsplashImage: UnsplashImage) {
+fun UnsplashItem(unsplashImage: UnsplashImage, usePreview: Boolean = false) {
     val context = LocalContext.current
     Box(
         modifier = Modifier
@@ -78,14 +76,22 @@ fun UnsplashItem(unsplashImage: UnsplashImage) {
             .fillMaxWidth(),
         contentAlignment = Alignment.BottomCenter
     ) {
-        AsyncImage(
-            modifier = Modifier.fillMaxSize(),
-            model = unsplashImage.urls.regular,
-            contentDescription = "Unsplash Image",
-            contentScale = ContentScale.Crop,
-            placeholder = painterResource(id = R.drawable.placeholder),
-            error = painterResource(id = R.drawable.placeholder_night)
-        )
+        if (usePreview) {
+            // Use static image for preview
+            Icon(
+                painter = painterResource(id = R.drawable.placeholder),
+                contentDescription = "Unsplash Image"
+            )
+        } else {
+            AsyncImage(
+                modifier = Modifier.fillMaxSize(),
+                model = unsplashImage.urls.regular,
+                contentDescription = "Unsplash Image",
+                contentScale = ContentScale.Crop,
+                placeholder = painterResource(id = R.drawable.placeholder),
+                error = painterResource(id = R.drawable.placeholder_night)
+            )
+        }
         Surface(
             modifier = Modifier
                 .height(40.dp)
@@ -116,7 +122,7 @@ fun UnsplashItem(unsplashImage: UnsplashImage) {
             )
             LikeCounter(
                 modifier = Modifier.weight(3f),
-                painter = painterResource(id = R.drawable.heart) ,
+                painter = painterResource(id = R.drawable.heart),
                 likes = "${unsplashImage.likes}"
             )
         }
@@ -155,12 +161,14 @@ fun LikeCounter(
 @Composable
 @Preview
 fun UnsplashImagePreview() {
+    // Providing mock data for preview without using Coil or LazyPagingItems
     UnsplashItem(
         unsplashImage = UnsplashImage(
             id = "1",
-            urls = Urls(regular = ""),
+            urls = Urls(regular = ""), // Empty URL as we won't load real images in preview
             likes = 100,
             user = User(userName = "Huzaifa", userLink = UserLinks(html = " "))
         )
     )
 }
+

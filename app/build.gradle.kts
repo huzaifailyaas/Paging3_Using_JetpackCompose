@@ -5,7 +5,7 @@ plugins {
     id("org.jetbrains.kotlin.android")
     id("kotlin-kapt")
     id("dagger.hilt.android.plugin")
-    id("org.jetbrains.kotlin.plugin.serialization") version "1.6.10" // Align with Kotlin serialization library
+    id("org.jetbrains.kotlin.plugin.serialization") version "1.9.0" // Align with Kotlin serialization library
 }
 
 android {
@@ -76,7 +76,7 @@ dependencies {
     implementation("androidx.compose.ui:ui-tooling-preview")
     implementation("androidx.compose.material3:material3")
     implementation("androidx.wear.compose:compose-material:1.4.0")
-    implementation("androidx.paging:paging-compose-android:3.3.2")
+    implementation("androidx.paging:paging-compose:3.3.2") // Removed 'paging-compose-android'
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
 
@@ -99,24 +99,22 @@ dependencies {
     // Compose Navigation
     implementation("androidx.navigation:navigation-compose:2.8.0")
 
-    // Room Components
+    // Room Components (Updated to 2.6.1)
     implementation("androidx.room:room-runtime:2.6.1")
-
-    //noinspection KaptUsageInsteadOfKsp
     kapt("androidx.room:room-compiler:2.6.1")
+    implementation("androidx.room:room-ktx:2.6.1")
+    implementation("androidx.room:room-paging:2.6.1") // Paging support for Room
 
+    // Paging Runtime
     implementation("androidx.paging:paging-runtime-ktx:3.3.2") // Latest stable version
-    implementation("androidx.paging:paging-compose:3.3.2") // Compose Paging
-
-
 
     // Dagger Hilt
-    implementation("com.google.dagger:hilt-android:2.44")
-    kapt("com.google.dagger:hilt-compiler:2.44")
+    implementation("com.google.dagger:hilt-android:2.47")
+    kapt("com.google.dagger:hilt-compiler:2.47")
 
-    // For With Transaction
-    implementation("androidx.room:room-ktx:2.6.1")
+    // Hilt extensions for ViewModels (Replaced with stable version)
+    implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
 
+    // Coil for image loading in Compose
     implementation("io.coil-kt:coil-compose:2.2.2")
-
 }
